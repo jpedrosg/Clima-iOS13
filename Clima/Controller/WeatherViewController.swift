@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialTextFields
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var txtFieldEmail: MDCTextField!
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    var txtFieldEmailController:MDCTextInputControllerUnderline!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        txtFieldEmailController = MDCTextInputControllerUnderline(textInput: txtFieldEmail)
+        txtFieldEmailController.isFloatingEnabled = true
         
         searchTextField.delegate = self
     }
@@ -30,10 +36,9 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.searchPressed(nil)
         return true
     }
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true
@@ -42,7 +47,7 @@ extension WeatherViewController: UITextFieldDelegate{
             return false
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text = ""
     }
