@@ -94,24 +94,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-bh-8Fw">
-                                        <rect key="frame" x="0.0" y="355.5" width="374" height="462.5"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acJ-sJ-H2w" customClass="MDCTextField">
-                                                <rect key="frame" x="0.0" y="8" width="374" height="18.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="acJ-sJ-H2w" secondAttribute="trailing" id="5fd-p1-pbY"/>
-                                            <constraint firstItem="acJ-sJ-H2w" firstAttribute="leading" secondItem="0ti-bh-8Fw" secondAttribute="leading" id="VC9-B8-wEI"/>
-                                            <constraint firstItem="acJ-sJ-H2w" firstAttribute="top" secondItem="0ti-bh-8Fw" secondAttribute="top" constant="8" id="yP6-ID-ZmB"/>
-                                        </constraints>
+                                        <rect key="frame" x="175" y="355.5" width="199" height="462.5"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0ti-bh-8Fw" secondAttribute="trailing" id="B0P-mo-Vwg"/>
-                                    <constraint firstItem="0ti-bh-8Fw" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="SFx-Ha-MYg"/>
                                     <constraint firstAttribute="trailing" secondItem="Tgv-vV-Mot" secondAttribute="trailing" id="Xxe-YD-sFY"/>
                                     <constraint firstItem="Tgv-vV-Mot" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="zMA-9O-gQ7"/>
                                 </constraints>
@@ -135,7 +121,6 @@
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="searchTextField" destination="2eh-wL-W34" id="5st-8x-oYl"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
-                        <outlet property="txtFieldEmail" destination="acJ-sJ-H2w" id="FWA-xy-353"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

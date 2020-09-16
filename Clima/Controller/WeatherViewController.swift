@@ -11,19 +11,18 @@ import MaterialComponents.MaterialTextFields
 
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var txtFieldEmail: MDCTextField!
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
-    var txtFieldEmailController:MDCTextInputControllerUnderline!
+    
+    var weatherManager = WeatherManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        txtFieldEmailController = MDCTextInputControllerUnderline(textInput: txtFieldEmail)
-        txtFieldEmailController.isFloatingEnabled = true
         
+        weatherManager.delegate = self
         searchTextField.delegate = self
     }
 
@@ -36,6 +35,7 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchPressed(nil)
         return true
     }
 
@@ -49,7 +49,26 @@ extension WeatherViewController: UITextFieldDelegate{
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
         textField.text = ""
     }
+ 
 }
 
+// MARK: - WeatherManagerDelegate
+extension WeatherViewController: WeatherManagerDelegate{
+    
+    func didUpdateWeather(_ weatherManager: WeatherManager, _ weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.cityLabel.text = weather.cityName
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+        }
+    }
+    
+    func didFailWithError(_ error: Error){
+        print(error)
+    }
+}
